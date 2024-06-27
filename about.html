@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="Design.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+            background-color: black;
+        }
+
+
+
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background: black;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+            transition: background-color 0.4s, box-shadow 0.4s;
+        }
+
+        header.sticky {
+            background: black;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        #searchInput {
+            background-color: transparent;
+            border: none;
+            color: white;
+            mix-blend-mode: difference;
+            font-size: 14px;
+            padding: 8px;
+            margin-left: 10px;
+            width: 150px;
+        }
+
+        #searchInput:focus {
+            outline: none;
+        }
+
+        .searchInput {
+            color: black;
+            mix-blend-mode: difference;
+        }
+
+        .navmenu {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .navmenu a {
+            color: red;
+            font-size: 16px;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: color 0.42s ease;
+        }
+
+        .navmenu a:hover {
+            color: red;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon i {
+            margin-right: 20px;
+            color: red;
+            font-size: 25px;
+            transition: color 0.42s ease;
+        }
+
+        .nav-icon i:hover {
+            color: #ee1c47;
+        }
+
+        #menu-icon {
+            font-size: 35px;
+            color: red;
+            cursor: pointer;
+        }
+
+
+        #menu-icon {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .container {
+            padding-top: 80px;
+        }
+
+
+
+        footer {
+            background: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        section {
+            padding: 5px 10%;
+        }
+
+        h2 {
+            color: #ff0000;
+            font-size: 28px;
+            text-transform: capitalize;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #ddd;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            background: #222;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #000;
+        }
+
+        .testimonial p {
+            background: #333;
+        }
+
+
+
+        @media (max-width: 890px) {
+            header {
+                padding: 20px 5%;
+            }
+
+
+            @media (max-width: 600px) {
+                #menu-icon {
+                    display: block;
+                }
+
+                .navmenu {
+                    position: absolute;
+                    top: 100%;
+                    opacity: 0;
+                    pointer-events: none;
+                    right: -100%;
+                    width: 200px;
+                    height: 100vh;
+                    background-color: black;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 120px 30px;
+                    transition: all .600s;
+                }
+
+                .navmenu a {
+                    display: block;
+                    margin: 18px 0;
+                }
+
+                .navmenu.open {
+                    opacity: 1;
+
+                    pointer-events: auto;
+
+                    right: 0;
+                }
+    </style>
+</head>
+
+<body>
+    <header> <a href="E-commerce.html" class="logo"><img src="./images/logo.png" alt="" /></a>
+
+        <ul class="navmenu">
+            <li><a href="E-commerce.html" id="home">Home</a></li>
+            <li><a href="#" class"nav-link" id="shop">Shop</a></li>
+            <li><a href="dashboard.html" id="dashboard">Dashboard</a></li>
+        </ul>
+
+
+        <div class="nav-icon">
+            <a href="#" id="searchButton"><i class="bx bx-search"></i></a>
+            <input type="text" placeholder="search for product" id="searchInput" class="hidden">
+            <a href="login.html"><i class="bx bx-user"></i></a>
+            <a href="#"><i class="bx bx-cart"></i></a>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <section id="main" class="container">
+        <h2 id="introduction">Introduction</h2>
+        <p>Welcome to Flux, your one-stop destination for the best computer parts and accessories. We pride ourselves on offering high-quality products that cater to both the casual user and the dedicated tech enthusiast.</p>
+
+        <h2 id="mission">Our Mission</h2>
+        <p>Our mission is to provide our customers with top-notch computer components and accessories at competitive prices. We aim to be the trusted source for your tech needs, offering products that enhance your computing experience.</p>
+
+        <h2 id="products">Our Products</h2>
+        <p>At Flux, we offer a wide range of products, including processors, graphics cards, motherboards, RAM, storage solutions, and various accessories. Each product is carefully selected to ensure it meets our high standards of quality and performance.</p>
+
+        <h2 id="why-choose-us">Why Choose Flux?</h2>
+        <p>Choosing Flux means choosing reliability, quality, and exceptional customer service. We understand the importance of your tech needs and are committed to ensuring you find the right products that meet your expectations. Our dedication to customer satisfaction sets us apart from the competition.</p>
+
+        <h2 id="our-story">Our Story</h2>
+        <p>Flux was founded by Carl Sanchez, a tech enthusiast with a passion for computers and a vision to provide the best components and accessories to fellow tech lovers. Carl's dedication and expertise are the driving forces behind Flux's success and commitment to quality.</p>
+
+        <h2 id="testimonials">Customer Testimonials</h2>
+        <div class="testimonial">
+            <p>"I recently bought a graphics card from Flux, and the quality is outstanding. The customer service was top-notch, and the delivery was quick. Highly recommend!" - Alex D.</p>
+            <p>"Flux has a great selection of computer parts. I found exactly what I needed, and the prices are unbeatable. Will definitely shop here again!" - Jamie L.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Copyright © @2024. All Rights Reserved.</p>
+
+    </footer>
+
+    <script>
+        const header = document.querySelector("header");
+        const searchButton = document.getElementById("searchButton");
+        const searchInput = document.getElementById("searchInput");
+        const menuIcon = document.getElementById("menu-icon");
+        const navmenu = document.querySelector('.navmenu');
+
+        // Toggle sticky class based on scroll
+        window.addEventListener("scroll", function() {
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+
+        // Toggle burger menu icon and menu visibility
+        menuIcon.addEventListener("click", function() {
+            menuIcon.classList.toggle('bx-x');
+            navmenu.classList.toggle('open');
+
+            if (navmenu.classList.contains('open')) {
+
+                setTimeout(function() {
+                    navmenu.style.opacity = '1';
+                }, 100); 
+            } else {
+
+                navmenu.style.opacity = '0';
+            }
+        });
+
+        // Toggle search input visibility when search button is clicked
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault(); 
+
+
+            searchButton.classList.toggle("hidden");
+            searchInput.classList.toggle("hidden");
+
+            if (!searchInput.classList.contains("hidden")) {
+                searchInput.focus(); 
+            }
+        });
+
+        // Close search input when clicking outside of it
+        document.addEventListener("click", function(event) {
+            const isClickInsideSearch = searchInput.contains(event.target);
+            const isClickInsideButton = searchButton.contains(event.target);
+
+            if (!isClickInsideSearch && !isClickInsideButton) {
+                searchInput.classList.add("hidden");
+                searchButton.classList.remove("hidden");
+            }
+        });
+    </script>
+
+    < /body>
+
+        < /html>

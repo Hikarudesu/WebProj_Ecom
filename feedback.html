@@ -1,0 +1,342 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback</title>   
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+
+
+
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background: black;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+            transition: background-color 0.4s, box-shadow 0.4s;
+        }
+
+        header.sticky {
+            background: white;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        #searchInput {
+            background-color: transparent;
+            border: none;
+            color: white;
+            mix-blend-mode: difference;
+            font-size: 14px;
+            padding: 8px;
+            margin-left: 10px;
+            width: 150px;
+        }
+
+        #searchInput:focus {
+            outline: none;
+        }
+
+        .searchInput {
+            color: black;
+            mix-blend-mode: difference;
+        }
+
+        .navmenu {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .navmenu a {
+            color: red;
+            font-size: 16px;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: color 0.42s ease;
+        }
+
+        .navmenu a:hover {
+            color: red;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon i {
+            margin-right: 20px;
+            color: red;
+            font-size: 25px;
+            transition: color 0.42s ease;
+        }
+
+        .nav-icon i:hover {
+            color: #ee1c47;
+        }
+
+        #menu-icon {
+            font-size: 35px;
+            color: red;
+            cursor: pointer;
+        }
+
+        #header.light-theme .menu-icon {
+            filter: invert(100%);
+
+        }
+
+        #header.dark-theme .menu-icon {
+            filter: none;
+
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+
+
+
+
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 300px;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 30px 30px -30px rgba(27, 26, 26, 0.315);
+        }
+
+        .form .title {
+            color: red;
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+
+        }
+
+        .form input,
+        .form textarea {
+            width: 100%;
+            padding: 8px 14px;
+            border: 1px solid rgb(219, 213, 213);
+            border-radius: 8px;
+            outline: 0;
+        }
+
+        .form textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .form button {
+            padding: 8px;
+            border: 0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            background-color: red;
+            color: #fff;
+            cursor: pointer;
+        }
+
+
+
+        @media (max-width: 890px) {
+            header {
+                padding: 20px 5%;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navmenu {
+                position: absolute;
+                top: 100%;
+                opacity: 0;
+                pointer-events: none;
+                right: -100%;
+                width: 200px;
+                height: 100vh;
+                background: inherit;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 120px 30px;
+                transition: all .600s;
+            }
+
+            .navmenu a {
+                display: block;
+                margin: 18px 0;
+            }
+
+            .navmenu.open {
+                opacity: 1;
+
+                pointer-events: auto;
+
+                right: 0;
+            }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <a href="E-commerce.html" class="logo"><img src="./images/logo.png" alt="Logo" /></a>
+        <ul class="navmenu">
+            <li><a href="E-commerce.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-icon">
+            <a href="#" id="searchButton"><i class="bx bx-search"></i></a>
+            <input type="text" placeholder="Search for something" id="searchInput" class="hidden">
+            <a href="login.html"><i class="bx bx-user"></i></a>
+            <a href="#"><i class="bx bx-cart"></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+
+
+    <form class="form">
+        <div class="title">Contact us</div>
+        <input type="text" placeholder="Your email" class="input">
+        <textarea placeholder="Your message"></textarea>
+        <button>Submit</button>
+    </form>
+
+    <script>
+        const header = document.querySelector("header");
+        const searchButton = document.getElementById("searchButton");
+        const searchInput = document.getElementById("searchInput");
+        const menuIcon = document.getElementById("menu-icon");
+        const navmenu = document.querySelector('.navmenu');
+
+        //update navmenu color based on header background
+        function updateNavmenuColor() {
+            if (header.classList.contains('sticky')) {
+                navmenu.style.backgroundColor = 'white'; 
+                navmenu.style.color = 'black'; 
+            } else {
+                navmenu.style.backgroundColor = 'black'; 
+                navmenu.style.color = 'white'; 
+            }
+        }
+
+        // Toggle sticky  on scroll
+        window.addEventListener("scroll", function() {
+            header.classList.toggle("sticky", window.scrollY > 0);
+            updateNavmenuColor(); 
+        });
+
+
+        menuIcon.addEventListener("click", function() {
+            menuIcon.classList.toggle('bx-x');
+            navmenu.classList.toggle('open');
+
+            if (navmenu.classList.contains('open')) {
+
+                setTimeout(function() {
+                    navmenu.style.opacity = '1';
+                }, 100); 
+            } else {
+
+                navmenu.style.opacity = '0';
+            }
+        });
+
+        // Toggle search input visibility when search button is clicked
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault(); 
+
+
+            searchButton.classList.toggle("hidden");
+            searchInput.classList.toggle("hidden");
+
+            if (!searchInput.classList.contains("hidden")) {
+                searchInput.focus(); 
+            }
+        });
+
+        // Close search input when clicking outside of it
+        document.addEventListener("click", function(event) {
+            const isClickInsideSearch = searchInput.contains(event.target);
+            const isClickInsideButton = searchButton.contains(event.target);
+
+            if (!isClickInsideSearch && !isClickInsideButton) {
+                searchInput.classList.add("hidden");
+                searchButton.classList.remove("hidden");
+            }
+        });
+
+
+        updateNavmenuColor();
+    </script>
+
+
+
+
+</body>
+
+</html>

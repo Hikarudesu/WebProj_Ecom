@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />q
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+
+
+
+    <style>
+        
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a,
+        img,
+        span,
+        input,
+        button,
+        ion-icon {
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            height: auto;
+        }
+
+        input,
+        button {
+            background: none;
+            border: none;
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ion-icon {
+            pointer-events: none;
+        }
+
+        html {
+            font-family: var(--ff-roboto);
+            font-size: 10px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            font-size: 1.6rem;
+            line-height: 1.7;
+        }
+
+        body.active {
+            overflow: hidden;
+        }
+
+        /* CUSTOM PROPERTY */
+        :root {
+            --tan-crayola: hsl(0, 100%, 50%);
+            --light-gray: hsl(0, 0%, 80%);
+            --black_10: hsla(0, 0%, 0%, 0.1);
+            --black_25: hsla(0, 0%, 0%, 0.25);
+            --black_50: hsla(0, 0%, 0%, 0.4);
+            --black_70: hsla(0, 0%, 0%, 0.7);
+            --cultured: hsl(220, 16%, 96%);
+            --manatee: hsl(218, 11%, 65%);
+            --black: hsl(0, 0%, 0%);
+            --white: hsl(0, 0%, 100%);
+        }
+
+
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background: black;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+            transition: background-color 0.4s, box-shadow 0.4s;
+        }
+
+        header.sticky {
+            background: white;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        #searchInput {
+            background-color: transparent;
+            border: none;
+            color: white;
+            mix-blend-mode: difference;
+            font-size: 14px;
+            padding: 8px;
+            margin-left: 10px;
+            width: 150px;
+        }
+
+        #searchInput:focus {
+            outline: none;
+        }
+
+        .searchInput {
+            color: black;
+            mix-blend-mode: difference;
+        }
+
+        .navmenu {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .navmenu a {
+            color: red;
+            font-size: 16px;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: color 0.42s ease;
+        }
+
+        .navmenu a:hover {
+            color: red;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon i {
+            margin-right: 20px;
+            color: red;
+            font-size: 25px;
+            transition: color 0.42s ease;
+        }
+
+        .nav-icon i:hover {
+            color: #ee1c47;
+        }
+
+        #menu-icon {
+            font-size: 35px;
+            color: red;
+            cursor: pointer;
+        }
+
+        #header.light-theme .menu-icon {
+            filter: invert(100%);
+            
+        }
+
+        #header.dark-theme .menu-icon {
+            filter: none;
+            
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .underline-white {
+            text-decoration: underline;
+            text-decoration-color: white;
+        }
+
+
+        .underline-black {
+            text-decoration: underline;
+            text-decoration-color: black;
+        }
+
+
+        main {
+            padding-top: 100px;
+            padding-bottom: 20px;
+        }
+
+
+        /* end text */
+
+        .end-text {
+            border: black;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .end-text p {
+            color: #111;
+            text-transform: capitalize;
+        }
+
+
+
+        @media (max-width: 890px) {
+            header {
+                padding: 20px 5%;
+            }
+        }
+
+
+
+        @media (max-width: 600px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navmenu {
+                position: absolute;
+                top: 100%;
+                opacity: 0;
+                pointer-events: none;
+                right: -100%;
+                width: 200px;
+                height: 100vh;
+                background: inherit;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 120px 30px;
+                transition: all .600s;
+            }
+
+            .navmenu a {
+                display: block;
+                margin: 18px 0;
+            }
+
+            .navmenu.open {
+                opacity: 1;
+                /* Visible when open */
+                pointer-events: auto;
+                /* Enable pointer events */
+                right: 0;
+            }
+        }
+
+
+
+        @media (min-width: 575px) {
+            .container {
+                max-width: 575px;
+                width: 100%;
+                margin-inline: auto;
+            }
+
+            .grid-list {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 25px;
+            }
+
+            .grid-list>li:last-child {
+                grid-column: span 2;
+                max-width: calc(50% - 12.5px);
+                width: 100%;
+                margin-inline: auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+
+            .product .title-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-block-end: 80px;
+            }
+
+            .filter-btn-list {
+                color: red;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 992px;
+            }
+
+            .grid-list>li:last-child {
+                all: unset;
+            }
+
+            .grid-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            :root {
+                --fs-2: 3.6rem;
+            }
+
+            .container {
+                max-width: 1200px;
+            }
+
+            .product-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+
+
+
+
+        /* Main Style */
+        .container .title-wrapper .section-title {
+            color: red;
+        }
+
+        .container {
+            padding-inline: 15px;
+        }
+
+        .section {
+            padding-block: var(--section-padding);
+        }
+
+        .img-holder {
+            aspect-ratio: var(--width) / var(--height);
+            background-color: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .h2,
+        .h3 {
+            font-weight: var(--fw-500);
+            line-height: 1.4;
+        }
+
+        .h2 {
+            font-size: var(--fs-2);
+        }
+
+        .h3 {
+            font-size: var(--fs-3);
+        }
+
+        .grid-list {
+            display: grid;
+            gap: 35px;
+        }
+
+        .has-before {
+            position: relative;
+            z-index: 1;
+        }
+
+        .has-before::before {
+            content: "";
+            position: absolute;
+        }
+
+        .badge-list {
+            --white: hsl(120, 100%, 50%);
+            background-color: transparent;
+            border-radius: 3px;
+            padding: 5px 10px;
+            border-radius: 2px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+
+
+
+
+        /* PRODUCT */
+        .product .section-title {
+            text-align: center;
+        }
+
+        .filter-btn-list {
+            margin-block: 20px 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn-item {
+            position: relative;
+            display: flex;
+        }
+
+        .filter-btn-item:not(:last-child)::after {
+            content: "|";
+            margin-inline: 15px;
+        }
+
+        .filter-btn {
+            transition: var(--transition-1);
+        }
+
+        .filter-btn.active {
+            color: var(--tan-crayola);
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .product-card .card-banner::before {
+            inset: 0;
+            background-color: var(--black_10);
+            opacity: 0;
+            transition: var(--transition-1);
+        }
+
+        .product-card .card-banner:is(:hover, :focus-within)::before {
+            opacity: 1;
+        }
+
+        .product-card .card-action-list {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 100%);
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            transition: var(--transition-2);
+        }
+
+        .product-card .card-banner:is(:hover, :focus-within) .card-action-list {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+
+        .product-card .card-action-btn {
+            background-color: var(--white);
+            font-size: 22px;
+            padding: 12px;
+            border-radius: 50%;
+            transition: var(--transition-1);
+        }
+
+        .product-card .card-action-btn:is(:hover, :focus) {
+            color: var(--tan-crayola);
+        }
+
+        .product-card .badge-list {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+        }
+
+        .product-card .badge {
+            color: var(--white);
+            font-size: var(--fs-5);
+            font-weight: var(--fw-500);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            line-height: 45px;
+            margin-block-end: 10px;
+        }
+
+        .product-card .badge.orange {
+            background-color: var(--red-orange-color-wheel);
+        }
+
+        .product-card .badge.cyan {
+            background-color: var(--middle-blue-green);
+        }
+
+        .product-card .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--black);
+            color: var(--white);
+            font-weight: var(--fw-500);
+            padding-inline: 15px;
+        }
+
+        .product-card .h3 {
+            font-size: unset;
+        }
+
+        .product-card .card-title {
+            color: var(--smokey-black);
+            font-weight: var(--fw-500);
+            margin-block: 18px 5px;
+            transition: var(--transition-1);
+        }
+
+        .product-card .card-title:is(:hover, :focus) {
+            color: var(--tan-crayola);
+        }
+
+        .product-card .card-price {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            color: var(--granite-gray);
+            font-size: var(--fs-4);
+        }
+
+        .product-card .card-price .del {
+            color: var(--spanish-gray);
+        }
+
+        .product-list>* {
+            display: none;
+        }
+
+        .product-list[data-filter="all"]>*,
+        .product-list[data-filter="accessory"]>.accessory,
+        .product-list[data-filter="parts"]>.parts,
+        .product-list[data-filter="others"]>.others {
+            display: block;
+            animation: fadeUp 1s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+
+
+    <header> <a href="E-commerce.html" class="logo"><img src="./images/logo.png" alt="" /></a>
+
+        <ul class="navmenu">
+            <li><a href="E-commerce.html" id="home">Home</a></li>
+            <li><a href="shop.html" class"nav-link" id="shop">Shop</a></li>
+            <li><a href="dashboard.html" id="dashboard">Dashboard</a></li>
+        </ul>
+
+
+        <div class="nav-icon">
+            <a href="#" id="searchButton"><i class="bx bx-search"></i></a>
+            <input type="text" placeholder="search for product" id="searchInput" class="hidden">
+            <a href="login.html"><i class="bx bx-user"></i></a>
+            <a href="#"><i class="bx bx-cart"></i></a>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+
+
+    <main>
+        <article>
+
+
+
+            <section class="section product" id="product" aria-label="product">
+                <div class="container">
+
+                    <div class="title-wrapper">
+                        <h2 class="h2 section-title"><big><b>Our Products</b></big></h2>
+
+                        <ul class="filter-btn-list">
+
+                            <li class="filter-btn-item">
+                                <button class="filter-btn active" data-filter-btn="all">All Products</button>
+                            </li>
+
+                            <li class="filter-btn-item">
+                                <button class="filter-btn" data-filter-btn="accessory">Accessory</button>
+                            </li>
+
+                            <li class="filter-btn-item">
+                                <button class="filter-btn" data-filter-btn="parts">Pc Parts</button>
+                            </li>
+
+                            <li class="filter-btn-item">
+                                <button class="filter-btn" data-filter-btn="others">Others</button>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <ul class="grid-list product-list" data-filter="all">
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/1.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+
+                                    <ul class="badge-list">
+
+                                        <li>
+                                            <div class="badge orange">Sale</div>
+                                        </li>
+
+                                        <li>
+                                            <div class="badge cyan">-10%</div>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">120MM RGB/White/Blue/Red LED Case Fan 4 Pin For PC Case Desktop Computer</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <del class="del">₱130.00</del>
+
+                                        <data class="price" value="">₱70.00</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/2.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="card-badge">Out of Stock</div>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">RGB Wired Headset RGB Rainbow Light Gaming Headset Headphones With Microphone</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱429</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/3.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">68 Key Wired Mechanical Keyboard Hot Swappable With Red Switch Gaming Keyboard</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱649</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/4.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Ramsta 2.5" SSD 128GB 256GB 512GB 1TB Solid State Drive / SSD Sata III For Desktop Laptop S800</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">3,815</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/5.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Nvision 19/20/22 Inch Led Monitor HD 720P/ FHD1080P 60Hz Pc Computer Laptop Monitor</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱1,949</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <image src="./images/6.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                        <ul class="card-action-list">
+
+                                            <li>
+                                                <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                    <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                                </button>
+                                            </li>
+
+                                            <li>
+                                                <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                    <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                                </button>
+                                            </li>
+
+                                            <li>
+                                                <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                                </button>
+                                            </li>
+
+                                        </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Cpu Cooler Fan Tower TDP 65W RGB Central Ligth 3Pin For Processor With Thermal</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱369</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/7.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Xbox 360 Wired/P4 Wireless Game Controller Wireless Gaming Controller Gamepad For</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱329</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/8.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Bluetooth LED Strip Lights Music Sync RGB Color Changing With Remote Smart Phone APP</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱70.00</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/9.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">H510 RGB Gaming Stereo Headphone For Desktop / Pc / Computer / Laptop / Cellphone</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱194</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="others">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/10.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">ABS-CBN Orginal Tv Plus [Complete Set] Digital Tv Converter Box TV Receiver For Tv</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱765</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/11.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Sata Cable With High-Speed Serial Sort 3.0 6GB/Solid State Hard Disk Data Cable For PC</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱10</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/12.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Wired Earphones Deep Bass Dynamic In-Ear Headset With Mic Gaming Earphone HP60</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱144</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/13.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">2.4Ghz Usb WiFi Adapter Free Driver 150Mbps Wireless WiFi Adapter For Laptop / PC</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱74</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/14.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">27 Inch 165HZ Pink Gaming Monitor 1500R Curved Frameless Full Hd Pc Laptop Monitor</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱14,190</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="others">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/15.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">NingMei 15.6" Laptop Intel 11th Gen N5095/ DDR4 16GB/M.2 512GB SSD Genuine Windows 11 Slim</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱13,899</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/16.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">GeForce RTX 3050 6GB Verto, 6GB GDDR6, Dual Fan Graphics Card 96-bit For PC Desktop</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱12,749</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/17.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Intel Core i5-10400 10th Gen Tray type Desktop Processor | 6 Cores 12 Threads LGA 1200 DDR4 CPU</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱7,969</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accessory">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/18.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Inplay Fox F5 Gaming Chair | Black Grey | White Grey | Fabric Material Ergonomic Office Chair</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱3,869</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/19.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Ramsta DDR4 16GB (2x8GB)/32GB (2x16GB) Snail RGB RAM Gaming 3200MHz Desktop Memory</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱2,869</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+
+                        <li class="parts">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/20.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Gigabyte H510M-K V2 DDR4 MATX Motherboard Socket LGA 1200 M.2 Pcie Support Intel 10th/11th</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱4,369</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+
+                        <li class="others">
+                            <div class="product-card">
+
+                                <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+                                    <img src="./images/21.jpg" width="300" height="300" loading="lazy" alt="" class="img-cover">
+
+                                    <ul class="card-action-list">
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+                                                <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                        <li>
+                                            <button class="card-action-btn" aria-label="add to whishlist" title="add to whishlist">
+                                                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                </a>
+
+                                <div class="card-content">
+                                    <h3 class="h3">
+                                        <a href="#" class="card-title">Inplay 3D Stereo Amplifier Wireless Bluetooth Speaker With Dual Wireless Microphone Karaoke</a>
+                                    </h3>
+
+                                    <div class="card-price">
+                                        <data class="price" value="">₱969</data>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+
+
+    <div class="end-text">
+        <p>Copyright © @2024. All Rights Reserved.</p>
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const header = document.querySelector("header");
+            const searchButton = document.getElementById("searchButton");
+            const searchInput = document.getElementById("searchInput");
+            const menuIcon = document.getElementById("menu-icon");
+            const navmenu = document.querySelector('.navmenu');
+            const currentPage = window.location.pathname.split("/").pop();
+            const homeLink = document.getElementById("home");
+            const dashboardLink = document.getElementById("dashboard");
+            const shopLink = document.getElementById("shop"); 
+
+            function updateUnderlineColor() {
+                // current scroll position
+                const scrollPosition = window.scrollY;
+
+                // Remove all underline
+                homeLink.classList.remove('underline-white', 'underline-black');
+                dashboardLink.classList.remove('underline-white', 'underline-black');
+                shopLink.classList.remove('underline-white', 'underline-black'); 
+
+                // Check current page and add underline
+                if (currentPage === "E-commerce.html" || currentPage === "") {
+                    if (scrollPosition > 0) {
+                        homeLink.classList.add('underline-black');
+                    } else {
+                        homeLink.classList.add('underline-white');
+                    }
+                } else if (currentPage === "dashboard.html") {
+                    if (scrollPosition > 0) {
+                        dashboardLink.classList.add('underline-black');
+                    } else {
+                        dashboardLink.classList.add('underline-white');
+                    }
+                } else if (currentPage === "shop.html") { 
+                    if (scrollPosition > 0) {
+                        shopLink.classList.add('underline-black');
+                    } else {
+                        shopLink.classList.add('underline-white');
+                    }
+                }
+            }
+
+            updateUnderlineColor();
+            window.addEventListener('scroll', updateUnderlineColor);
+
+
+
+            // Toggle sticky class on scroll
+            window.addEventListener("scroll", function() {
+                header.classList.toggle("sticky", window.scrollY > 0);
+            });
+
+            // Toggle burger menu icon and menu visibility
+            menuIcon.addEventListener("click", function() {
+                menuIcon.classList.toggle('bx-x');
+                navmenu.classList.toggle('open');
+
+                if (navmenu.classList.contains('open')) {
+                    
+                    setTimeout(function() {
+                        navmenu.style.opacity = '1';
+                    }, 100); 
+                } else {
+                    
+                    navmenu.style.opacity = '0';
+                }
+            });
+
+
+
+            // Toggle search input visibility when search button is clicked
+            searchButton.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                // Toggle visibiliy search elements
+                searchButton.classList.toggle("hidden");
+                searchInput.classList.toggle("hidden");
+
+                if (!searchInput.classList.contains("hidden")) {
+                    searchInput.focus(); 
+                }
+            });
+
+            // Close search input when clicking outside of it
+            document.addEventListener("click", function(event) {
+                const isClickInsideSearch = searchInput.contains(event.target);
+                const isClickInsideButton = searchButton.contains(event.target);
+
+                if (!isClickInsideSearch && !isClickInsideButton) {
+                    searchInput.classList.add("hidden");
+                    searchButton.classList.remove("hidden");
+                }
+            });
+
+
+
+
+
+
+            const filterBtns = document.querySelectorAll("[data-filter-btn]");
+            const filterBox = document.querySelector("[data-filter]");
+            let lastClickedFilterBtn = filterBtns[0];
+
+            // Add event on element
+            const addEventOnElem = (elem, type, callback) => {
+                if (elem.length > 1) {
+                    elem.forEach((el) => el.addEventListener(type, callback));
+                } else {
+                    elem.addEventListener(type, callback);
+                }
+            };
+
+            // Product filter
+            const filter = function() {
+                lastClickedFilterBtn.classList.remove("active");
+                this.classList.add("active");
+                lastClickedFilterBtn = this;
+
+                filterBox.setAttribute("data-filter", this.dataset.filterBtn);
+            };
+
+            addEventOnElem(filterBtns, "click", filter);
+        });
+    </script>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

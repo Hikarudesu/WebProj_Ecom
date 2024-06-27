@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Jost', sans-serif;
+            list-style: none;
+            text-decoration: none;
+        }
+
+
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background: black;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+            transition: background-color 0.4s, box-shadow 0.4s;
+        }
+
+        header.sticky {
+            background: white;
+            box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+        }
+
+        .logo img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        #searchInput {
+            background-color: transparent;
+            border: none;
+            color: white;
+            mix-blend-mode: difference;
+            font-size: 14px;
+            padding: 8px;
+            margin-left: 10px;
+            width: 150px;
+        }
+
+        #searchInput:focus {
+            outline: none;
+        }
+
+        .searchInput {
+            color: black;
+            mix-blend-mode: difference;
+        }
+
+        .navmenu {
+            display: flex;
+            transition: all 0.3s ease;
+        }
+
+        .navmenu a {
+            color: red;
+            font-size: 16px;
+            padding: 10px 20px;
+            font-weight: 400;
+            transition: color 0.42s ease;
+        }
+
+        .navmenu a:hover {
+            color: red;
+        }
+
+        .nav-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon i {
+            margin-right: 20px;
+            color: red;
+            font-size: 25px;
+            transition: color 0.42s ease;
+        }
+
+        .nav-icon i:hover {
+            color: #ee1c47;
+        }
+
+        #menu-icon {
+            font-size: 35px;
+            color: red;
+            cursor: pointer;
+        }
+
+        #header.light-theme .menu-icon {
+            filter: invert(100%);
+            /* Invert colors for light backgrounds */
+        }
+
+        #header.dark-theme .menu-icon {
+            filter: none;
+            /* Reset filter for dark backgrounds */
+        }
+
+        #menu-icon {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .underline-white {
+            text-decoration: underline;
+            text-decoration-color: white;
+        }
+
+
+        .underline-black {
+            text-decoration: underline;
+            text-decoration-color: black;
+        }
+
+
+        main {
+            padding-top: 100px;
+            padding-bottom: 20px;
+        }
+
+
+
+
+
+
+
+        .card {
+            padding: 1rem;
+            background-color: #fff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            max-width: 320px;
+            border-radius: 20px;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        .title span {
+            position: relative;
+            padding: 0.5rem;
+            background-color: #10B981;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 9999px;
+        }
+
+        .title span svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            height: 1rem;
+        }
+
+        .title-text {
+            margin-left: 0.5rem;
+            color: #374151;
+            font-size: 18px;
+        }
+
+        .percent {
+            margin-left: 0.5rem;
+            color: #02972f;
+            font-weight: 600;
+            display: flex;
+        }
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .data p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            color: #1F2937;
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .data .product-color {
+            opacity: 1;
+            font-weight: normal;
+        }
+
+        .data .range {
+            position: relative;
+            background-color: #E5E7EB;
+            width: 100%;
+            height: 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        .data .range .fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #10B981;
+            width: 76%;
+            height: 100%;
+            border-radius: 0.25rem;
+        }
+
+
+
+
+
+
+        .dashboard {
+            padding: 60px 70px;
+            background-color: #f7f7f7;
+        }
+
+        .dashboard h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .dashboard-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            width: 48%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            align-items: center;
+
+        }
+
+
+
+        .end-text {
+            border: black;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .end-text p {
+            color: #111;
+            text-transform: capitalize;
+        }
+
+
+
+
+
+        /* Responsive Design for Dashboard */
+        @media (max-width: 768px) {
+
+
+            .dashboard-content {
+                flex-direction: align;
+                align-items: center;
+                
+            }
+
+            .card {
+
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 890px) {
+            header {
+                padding: 20px 5%;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navmenu {
+                position: absolute;
+                top: 100%;
+                opacity: 0;
+                pointer-events: none;
+                right: -100%;
+                width: 200px;
+                height: 100vh;
+                background: inherit;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 120px 30px;
+                transition: all .600s;
+            }
+
+            .navmenu a {
+                display: block;
+                margin: 18px 0;
+            }
+
+            .navmenu.open {
+                opacity: 1;
+                
+                pointer-events: auto;
+                
+                right: 0;
+            }
+
+
+
+    </style>
+</head>
+
+<body>
+    <header> <a href="E-commerce.html" class="logo"><img src="./images/logo.png" alt="" /></a>
+
+        <ul class="navmenu">
+            <li><a href="E-commerce.html" id="home">Home</a></li>
+            <li><a href="shop.html" class"nav-link" id="shop">Shop</a></li>
+            <li><a href="dashboard.html" id="dashboard">Dashboard</a></li>
+        </ul>
+
+
+        <div class="nav-icon">
+            <a href="#" id="searchButton"><i class="bx bx-search"></i></a>
+            <input type="text" placeholder="search for product" id="searchInput" class="hidden">
+            <a href="login.html"><i class="bx bx-user"></i></a>
+            <a href="#"><i class="bx bx-cart"></i></a>
+
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Data and Analysis</h2>
+            <div class="dashboard-content">
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Sales Overview</p>
+                        <p class="percent">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                            </svg> 20%
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p id="sales-number">39,500</p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Product Performance</p>
+                        <p class="percent">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                            </svg> 20%
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p>Best performing product: </p>
+                        <p id="product-name" class="product-color"><small>RGB Wired Headset</small></p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Customer Feedback</p>
+                        <p class="percent">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                            </svg> 20%
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p id="rating-number"><small>Positive feedback rating: 4.8/5 based on 1000 reviews</small></p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Inventory Status</p>
+                        <p class="percent">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                            </svg> 20%
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p id="stock-number"><small>Items in stock: 500 units</small></p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Order Management</p>
+                        <p class="percent">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                            </svg> 20%
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p id="order-number"><small>Orders processed today: 50</small></p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="card">
+                    <div class="title">
+                        <span>
+                            <svg width="20" fill="currentColor" height="20" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
+                            </svg>
+                        </span>
+                        <p class="title-text">Support Tickets</p>
+                                <p class="percent">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792" fill="currentColor" height="20" width="20">
+                                        <path d="M1408 1216q0 26-19 45t-45 19h-896q-26 0-45-19t-19-45 19-45l448-448q19-19 45-19t45 19l448 448q19 19 19 45z"></path>
+                                    </svg> 20%
+                                </p>
+                    </div>
+                    <div class="data">
+                        <p id="support-number"><small>Open support tickets: 10</small></p>
+                        <div class="range">
+                            <div class="fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+    </main>
+
+
+    <div class="end-text">
+        <p>Copyright © @2024. All Rights Reserved.</p>
+    </div>
+
+
+    <script>
+        const header = document.querySelector("header");
+        const searchButton = document.getElementById("searchButton");
+        const searchInput = document.getElementById("searchInput");
+        const menuIcon = document.getElementById("menu-icon");
+        const navmenu = document.querySelector('.navmenu');
+        const currentPage = window.location.pathname.split("/").pop();
+        const homeLink = document.getElementById("home");
+        const dashboardLink = document.getElementById("dashboard");
+
+
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function updateSalesNumber() {
+            const salesNumberElement = document.getElementById('sales-number');
+            const randomSalesNumber = getRandomNumber(35000, 45000);
+            salesNumberElement.textContent = randomSalesNumber.toLocaleString();
+        }
+        setInterval(updateSalesNumber, 1000);
+
+
+
+
+
+        function updateProductName() {
+            const productNames = ['RGB Wired Headset', 'Bluetooth Speaker', 'Gaming Mouse', 'Wireless Keyboard'];
+            const randomIndex = Math.floor(Math.random() * productNames.length);
+            const productName = productNames[randomIndex];
+            const productNumberElement = document.getElementById('product-name');
+            productNumberElement.textContent = productName;
+        }
+
+        function updateDashboard() {
+            updateProductName();
+            updateProductPerformance();
+        }
+        setInterval(updateProductName, 1000);
+
+
+
+
+        function updateCustomerFeedback() {
+            const rating = (Math.random() * (4.5 - 4) + 4).toFixed(1); 
+            const totalReviews = Math.floor(Math.random() * 500) + 500; 
+            const feedbackCard = document.querySelector('#rating-number');
+            feedbackCard.textContent = `Positive feedback rating: ${rating}/5 based on ${totalReviews} reviews`;
+        }
+        setInterval(updateCustomerFeedback, 1000);
+
+
+
+
+        function updateInventoryStatus() {
+            const inStock = Math.floor(Math.random() * 1000) + 500; 
+            const inventoryCard = document.querySelector('#stock-number');
+            inventoryCard.textContent = `Items in stock: ${inStock} units`;
+        }
+        setInterval(updateInventoryStatus, 1000);
+
+
+
+        function updateOrderManagement() {
+            const ordersProcessed = Math.floor(Math.random() * 100) + 20;
+            const orderCard = document.querySelector('#order-number');
+            orderCard.textContent = `Orders processed today: ${ordersProcessed}`;
+        }
+        setInterval(updateOrderManagement, 1000);
+
+
+
+
+        function updateSupportTickets() {
+            const openTickets = Math.floor(Math.random() * 20); 
+            const ticketsCard = document.querySelector('#support-number');
+            ticketsCard.textContent = `Open support tickets: ${openTickets}`;
+        }
+        setInterval(updateSupportTickets, 1000);
+
+
+
+
+
+
+
+        function updateUnderlineColor() {
+            // Get the current scroll position
+            const scrollPosition = window.scrollY;
+
+            // Remove all underline
+            homeLink.classList.remove('underline-white', 'underline-black');
+            dashboardLink.classList.remove('underline-white', 'underline-black');
+
+            // Check current page and add underline
+            if (currentPage === "E-commerce.html" || currentPage === "") {
+                if (scrollPosition > 0) {
+                    homeLink.classList.add('underline-black');
+                } else {
+                    homeLink.classList.add('underline-white');
+                }
+            } else if (currentPage === "dashboard.html") {
+                if (scrollPosition > 0) {
+                    dashboardLink.classList.add('underline-black');
+                } else {
+                    dashboardLink.classList.add('underline-white');
+                }
+            }
+        }
+
+        updateUnderlineColor();
+        window.addEventListener('scroll', updateUnderlineColor);
+
+
+
+
+
+        // Toggle sticky class on scroll
+        window.addEventListener("scroll", function() {
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+
+        // Toggle burger menu icon and menu visibility
+        menuIcon.addEventListener("click", function() {
+            menuIcon.classList.toggle('bx-x');
+            navmenu.classList.toggle('open');
+
+            if (navmenu.classList.contains('open')) {
+                
+                setTimeout(function() {
+                    navmenu.style.opacity = '1';
+                }, 100); 
+            } else {
+                
+                navmenu.style.opacity = '0';
+            }
+        });
+
+
+
+        // Toggle search input visibility when search button is clicked
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault();
+
+            // Toggle visibility of search elements
+            searchButton.classList.toggle("hidden");
+            searchInput.classList.toggle("hidden");
+
+            if (!searchInput.classList.contains("hidden")) {
+                searchInput.focus();
+            }
+        });
+
+        // Close search input when clicking outside of it
+        document.addEventListener("click", function(event) {
+            const isClickInsideSearch = searchInput.contains(event.target);
+            const isClickInsideButton = searchButton.contains(event.target);
+
+            if (!isClickInsideSearch && !isClickInsideButton) {
+                searchInput.classList.add("hidden");
+                searchButton.classList.remove("hidden");
+            }
+        });
+    </script>
+
+</body>
+
+</html>
